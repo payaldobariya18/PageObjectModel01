@@ -10,9 +10,11 @@ public class TestSuit extends BaseTest{
    RegisterResultPage registerResultPage=new RegisterResultPage();
 
    LogIn logIn = new LogIn();
+   CategoriesPage categoriesPage=new CategoriesPage();
+    EmailResultPage emailResultPage = new EmailResultPage();
 
    @Test  (priority = 1)
-   public void verifyuserShouldAbleToRegisterSuccessfully(){
+   public void verifyUserShouldAbleToRegisterSuccessfully() {
        //click on registerbutton
        homePage.clickOnRegisterButton();
        //verify user is on register page
@@ -21,50 +23,51 @@ public class TestSuit extends BaseTest{
        registerPage.enterRegistraionDetails();
        //verify user registred successfully
        registerResultPage.verifyUserRegistraionSuccessfully();
-       logIn.verifyUserShouldBeAbleTOLogIn();
+
 
    }
-   @Test (priority = 2)
-  public void userShouldLOgInSuccessfully() {
+    @Test (priority = 2)
+    public void verifyUserShouldLogInSuccessfully() {
+        //click on login button
+        homePage.clickOnLoginButton();
+        //enter login details
+        logIn.verifyUserShouldBeAbleTOLogIn();
 
-    logIn.verifyUserShouldBeAbleTOLogIn();
+    }
+   @Test
+    public void verifyRegisteredUserShouldReferAProductTOFriend(){
 
- }
- @Test (priority = 3)
-  public void verfyRegisteredUserShouldAbleToReferAProductToFriendSuccessfully() {
-
-     //click on registerbutton
-     homePage.clickOnRegisterButton();
-     //verify user is on register page
-     registerPage.verifyUserIsOnRegistrationPage();
-     //enter registration details
-     registerPage.enterRegistraionDetails();
-     //verify user registred successfully
-     registerResultPage.verifyUserRegistraionSuccessfully();
-     //click on electronics
-     homePage.clickOnElectronics();
-     //click on camera&photo
-     homePage.clickOnCameraAndPhoto();
-     //click on digital camera
-     homePage.clickOnDigitalCamera();
-     //click on email a friend button
-     homePage.clickOnEmailAFriend();
-     //enter friend email
-     homePage.enterAFriendEmail();
-     //enter a message
-     homePage.enterPersonalMessage();
-     // click on SEND EMAIL buttonn
-     homePage.clickOnASendMailButton();
-     //get text 'your message has been sent'
-    homePage.verifyUserSentMessageSuccessfully();
- }
+       //User should logged in and click on login button
+        homePage.clickOnLoginButton();
+        //enter login details
+        logIn.verifyUserShouldBeAbleTOLogIn();
+       //click on electronics button
+        homePage.clickOnElectronics();
+        //click on camera&photo
+        categoriesPage.clickOnCameraAndPhoto();
+       //click on Digital photo
+        categoriesPage.clickOnDigitalCamera();
+       //click on sent a mail button to reffering product to friend
+        categoriesPage.SendAMailToFriendForRefferingProduct();
+       //sent a message successfully
+      emailResultPage.verifyUserSentMessageSuccessfully();
 
 
 
 
 
+
+
+
+
+
+
+
+
+    }
 
 
 
 
 }
+

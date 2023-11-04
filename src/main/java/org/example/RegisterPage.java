@@ -9,11 +9,11 @@ public class RegisterPage extends Utils{
 
     public void verifyUserIsOnRegistrationPage()
     {
-        Assert.assertTrue(driver.getCurrentUrl().contains("register"), "url contains register word");
+        Assert.assertTrue(driver.getCurrentUrl().contains("register"), "User is not on register page");
     }
    public void enterRegistraionDetails()
    {
-       System.out.println(email);
+       //System.out.println(email);
        waitForClickable(By.linkText("Register"), 10); //explicit wait
 
        // driver.findElement(By.id("FirstName")).sendKeys("Nick");
@@ -30,7 +30,7 @@ public class RegisterPage extends Utils{
        //Dropdown Year
        Select selectYear = new Select(driver.findElement(By.name("DateOfBirthYear")));
        selectYear.selectByValue("1927"); //Dropdown Year
-
+       System.out.println(email);
        //driver.findElement(By.name("Email")).sendKeys("nickjonas" +timeStamp()+"@gmail.com");
        typetext(By.name("Email"), email); // enter email adress
 

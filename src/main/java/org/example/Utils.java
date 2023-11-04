@@ -1,14 +1,19 @@
 package org.example;
 
+import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.By;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.io.File;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
 
 public class Utils extends BasePage{
-    static String email = "nickjonas" + timeStamp() + "@gmail.com";
+   //
+   static String email = "nickjonas" + timeStamp() + "@gmail.com";
     static String password = "Test1234";
 
     public static void clickonelements(By by) {
@@ -53,10 +58,18 @@ public class Utils extends BasePage{
         return timeStamp;
     }
 
-
-
-
-
+    public static void captureScreenshot(String screenShotName) {
+        //convert web driver object to screenshot
+        TakesScreenshot ts = (TakesScreenshot) driver;
+        //call getScreenshotAs method to create image file
+        File source = ts.getScreenshotAs(OutputType.FILE);
+        try {
+            FileUtils.copyFile(source, new File("ScreenshotsTS\\" + screenShotName + timeStamp() + ".png"));
+            System.out.println("Screenshot taken");
+        } catch (Exception e) {
+            System.out.println("Exception while taking screenshot" + e.getMessage());
+        }
+    }
 
 
 }
